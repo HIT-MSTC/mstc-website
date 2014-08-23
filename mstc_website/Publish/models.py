@@ -19,7 +19,7 @@ class Event(models.Model):
 	now_num = models.IntegerField()
 	start_time = models.DateTimeField()
 	end_time = models.DateTimeField()
-	dynamics = models.OneToOneField()
+	dynamics = models.OneToOneField(Dynamics)
 
 	def __unicode__(self):
 		return self.name

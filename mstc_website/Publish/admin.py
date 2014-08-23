@@ -1,5 +1,5 @@
 from django.contrib import admin
-from Publish import *
+from Publish.models import *
 
 # Register your models here.
 admin.site.register(Dynamics)

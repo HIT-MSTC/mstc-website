@@ -855,8 +855,9 @@ a {
 .metro h4,
 .metro h5,
 .metro h6 {
-  padding: 0;
-  margin: 10px 0;
+  padding: 10;
+  margin: 0;
+  vertical-align: middle;
 }
 .metro h1 {
   font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
