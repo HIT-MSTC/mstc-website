@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}活动报名{% endblock %}
+
+{% block content %}
+
+<div class="container bg-white">
+	<div class="span4 offset1" style="padding-left:20px;padding-top:20px">
+		<form method="post" class="no-margin">
+			{% csrf_token %}
+			{% if event.needname %}
+				<label>姓名</label>
+				<div class="input-control text">
+					<input type="text" required name="name">
+					<button class="btn-clear"></button>
+				</div>
+			{% endif %}
+			{% if event.needcollege %}
+				<label>学院</label>
+				<div class="input-control text">
+					<input type="text" required name="college">
+					<button class="btn-clear"></button>
+				</div>
+			{% endif %}
+			{% if event.needgrade %}
+				<label>年级</label>
+				<div class="input-control select">
+					<select name="grade">
+						{% for y in year %}
+						<option value="{{ y }}">{{ y }}</option>
+						{% endfor %}
+					</select>
+				</div>
+			{% endif %}
+			{% if event.needphone %}
+				<label>电话</label>
+				<div class="input-control text">
+					<input type="tel" required name="phone">
+					<button class="btn-clear"></button>
+				</div>
+			{% endif %}
+			{% if event.needemail %}
+				<label>Email</label>
+				<div class="input-control text">
+					<input type="email" required name="email">
+					<button class="btn-clear"></button>
+				</div>
+			{% endif %}
+			{% if event.needqq %}
+				<label>QQ</label>
+				<div class="input-control text">
+					<input type="tel" required name="qq">
+					<button class="btn-clear"></button>
+				</div>
+			{% endif %}
+			{% if event.needothername %}
+				<label>{{ event.othername }}</label>
+				<div class="input-control text">
+					<input type="text" name="other">
+					<button class="btn-clear"></button>
+				</div>
+			{% endif %}
+			<div class="form-actions" style="padding-top:20px; padding-bottom:20px">
+				<button class="button primary" type="submit">提交</button>
+			</div>
+		</form>
+
+	</div>
+</div>
+
+
+
+{% endblock %}

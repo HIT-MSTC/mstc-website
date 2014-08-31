@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}全部动态{% endblock %}
+
+{% block content %}
+
+<div class="container bg-white">
+	<h2 class="no-margin offset1 subheader" style="padding-left:20px;padding-top:20px;">全部动态</h2>
+	<div class="listview-outlook offset1 span11 listview" data-role="listview" style="padding-top:20px;padding-bottom:20px;">
+		{% for item in dynlst %}
+			<a href="dynlist/detail/?id={{ item.id }}" class="list" onclick="window.location.href='dynlist/detail/?id={{ item.id }}'">
+				<div class="list-content">
+					<span class="list-title">{{ item.title }}</span>
+					<span class="list-subtitle">{{ item.author }}</span>
+					<span class="list-remark">{{ item.publish_time|date:"Y-m-d H:i:s" }}</span>
+				</div>
+			</a>
+		{% empty %}
+			<a href="#" class="list active marked">
+				<div class="list-content">
+					<span class="list-title">暂无动态</span>
+				</div>
+			</a>
+		{% endfor %}
+	</div>
+</div>
+
+{% endblock %}

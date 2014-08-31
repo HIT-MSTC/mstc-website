@@ -8,10 +8,12 @@
 		<link rel="stylesheet" type="text/css" href="{% static "css/iconFont.min.css" %}">
 		<link rel="stylesheet" type="text/css" href="{% static "css/metro-bootstrap.css" %}">
 		<link rel="stylesheet" type="text/css" href="{% static "css/metro-bootstrap-responsive.css" %}">
+		<script type="text/javascript" src="{% static "js/add.js" %}"></script>
+		<script type="text/javascript" src="{% static "js/jquery.min.js" %}"></script>
 	</head>
 	<body class="metro" style="background-color:rgb(82,82,82); padding-top:45px;">
 		<!-- Here is the navbar -->
-		<nav class="navigation-bar dark fixed-top" style="background-color:rgb(26,26,26); width:1140px;margin:0px 104.5px 0px 104.5px">
+		<nav class="navigation-bar dark fixed-top" style="background-color:rgb(26,26,26);">
 			<div class="navigation-bar-content container">
 				<div class="offset1">
 				<a href="/" class="element" style="padding:0px 10px 0px 20px;">
@@ -21,7 +23,7 @@
 				<!-- <span class="element-divider"></span> -->
 
 				<a href="/" class="element" style="font-size:13px;">首页</a>
-				<a href="#" class="element" style="font-size:13px;">动态</a>
+				<a href="/dynlist" class="element" style="font-size:13px;">动态</a>
 				<a href="#" class="element" style="font-size:13px;">活动报名</a>
 				<a href="#" class="element" style="font-size:13px;">关于我们</a>
 			</div>
@@ -47,10 +49,8 @@
 			</div>
 		</div>
 		</div>
-		<script type="text/javascript" src="{% static "js/jquery.min.js" %}"></script>
 		<script type="text/javascript" src="{% static "js/jquery.widget.min.js" %}"></script>
 		<script type="text/javascript" src="{% static "js/jquery.mousewheel.js" %}"></script>
 		<script type="text/javascript" src="{% static "js/metro.min.js" %}"></script>
-		<script type="text/javascript" src="{% static "js/join.js" %}"></script>
 	</body>
 </html>

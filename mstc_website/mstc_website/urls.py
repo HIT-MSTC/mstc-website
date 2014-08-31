@@ -1,4 +1,6 @@
 from django.conf.urls import patterns, include, url
+from django.conf.urls.static import static
+from django.conf import settings
 from Publish import views
 from django.contrib import admin
 admin.autodiscover()
@@ -10,4 +12,8 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$',views.home),
+    url(r'^addDynamics$',views.addDynamics),
+    url(r'^dynlist$',views.dynlist),
+    url(r'^dynlist/detail/$',views.dyndetail),
+    url(r'^join/$',views.join),
 )

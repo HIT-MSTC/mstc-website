@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}添加动态{% endblock %}
+
+{% block content %}
+
+
+<div class="container bg-white">
+	<div class="span10 offset1" style="padding-left:20px;padding-top:20px">
+		<h2>添加动态</h2>
+		<div class="row" style="margin-top:20px;margin-bottom:20px;">
+			<button class="butten info" onclick="showform()" data-s="off" id="Switch" sty>开启报名</button>
+		</div>
+		<form method="post" class="no-margin">
+			{% csrf_token %}
+			<label>标题</label>
+			<div class="input-control text">
+				<input type="text" value="" required name="title">
+				<button class="btn-clear"></button>
+			</div>
+
+			<label>内容</label>
+			<div class="input-control textarea">
+				<textarea name="content" rows="5" warp="hard" cols="40"></textarea>
+			</div>
+			<input type="hidden" name="hasform" id="hasform" value="Fales">
+			<div id="infoform" style="margin-top:20px;" hidden>
+				<h2 style="margin-bottom:20px">活动信息</h2>
+
+				<label>活动名称</label>
+				<div class="input-control text size6">
+					<input type="text" value="" name="name" >
+					<button class="btn-clear"></button>
+				</div>
+
+				<label>活动时间</label>
+				<div class="input-control ">
+					<input type="datetime-local" name="event_time">
+				</div>
+
+				<label>最大参与人数</label>
+				<div class="input-control">
+					<input type="number" min="0" max="999" value="" name="number">
+				</div>
+
+				<label>报名开始时间</label>
+				<div class="input-control">
+					<input type="datetime-local" name="start_time">
+				</div>
+
+				<label>报名截止时间</label>
+				<div class="input-control">
+					<input type="datetime-local" name="end_time">
+				</div>
+				
+				<h2 style="margin-bottom:20px;margin-top:20px;">报名表信息</h2>
+				
+				<div class="input-control checkbox">
+					<label>
+						<input type="checkbox" name="needname" value="True">
+						<span class="check"></span>
+						姓名
+					</label>
+					<label>
+						<input type="checkbox" name="needcollege" value="True">
+						<span class="check"></span>
+						学院
+					</label>
+					<label>
+						<input type="checkbox" name="needgrade" value="True">
+						<span class="check"></span>
+						年级
+					</label>
+					<label>
+						<input type="checkbox" name="needphone" value="True">
+						<span class="check"></span>
+						电话
+					</label>
+					<label>
+						<input type="checkbox" name="needemail" value="True">
+						<span class="check"></span>
+						E-mail
+					</label>
+					<label>
+						<input type="checkbox" name="needqq" value="True">
+						<span class="check"></span>
+						QQ
+					</label>
+					<label>
+						<input type="checkbox" name="needcollege" value="True">
+						<span class="check"></span>
+						学院
+					</label>
+					<label>
+						<input type="checkbox" name="needothername" value="True" id="needother" onchange="showname()">
+						<span class="check"></span>
+						其他信息
+					</label>
+				</div>
+				<div id="showother" hidden>
+					<label>其他信息显示为</label>
+					<div class="input-control text size2">
+						<input type="text" name="othername">
+						<button class="btn-clear"></button>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-actions" style="padding-top:20px; padding-bottom:20px">
+				<button class="button primary" type="submit">提交</button>
+			</div>
+
+		</form>
+		
+	</div>
+</div>
+
+
+{% endblock %}

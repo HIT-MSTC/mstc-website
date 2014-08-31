@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}动态详情{% endblock %}
+
+{% block content %}
+
+<div class="container bg-white">
+	<h2 class="no-margin offset1 subheader" style="padding-left:20px;padding-top:20px;">{{ dyn.title }}</h2>
+	<h5 class="no-margin offset1" style="padding-top:20px;">{{dyn.author}}&nbsp;&nbsp;<small>{{ dyn.publish_time|date:"Y-m-d H:i:s" }}</small></h5>
+	<pre class="readable-text code-text offset1 span12 no-margin" style="padding-top:20px;padding-bottom:20px;white-space:pre-wrap">{{ dyn.content }}</pre>
+	{% if dyn.hasform %}
+		<img src="http://api.kuaipai.cn/qr?chs=120x120&chl=" class="shadow offset1">
+		<br>
+		<a href="/join/?id={{ dyn.event.id }}" class="button primary offset1 large" style="margin:20px;">参加活动</a>
+	{% endif %}
+</div>
+
+{% endblock %}
