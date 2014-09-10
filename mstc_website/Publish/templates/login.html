@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}后台登陆{% endblock %}
+
+{% block content %}
+
+<div class="container bg-white">
+	<!-- TODO: add a well to retuen login err info -->
+	<div class="span4 offset1" style="padding-left:20px;padding-top:20px">
+		<form method="post" class="no-margin">
+			{% csrf_token %}
+			<label>用户名</label>
+			<div class="input-control text">
+				<input type="text" required name="username">
+				<button class="btn-clear"></button>
+			</div>
+			<label>密码</label>
+			<div class="input-control password">
+			    <input type="password" value="" name="passwd">
+			    <button class="btn-reveal"></button>
+			</div>
+			<div class="form-actions" style="padding-top:20px; padding-bottom:20px">
+				<button class="button primary" type="submit">提交</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+{% endblock %}

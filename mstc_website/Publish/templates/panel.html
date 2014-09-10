@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}仪表盘{% endblock %}
+
+{% block content %}
+
+<div class="container bg-white">
+	<div class="row span5 offset1" style="padding-top:20px;padding-left:20px;padding-bottom:20px;">
+		<a href="/addDynamics">
+			<div class="notice text-center">
+				<h2 class="fg-white">添加动态</h2>
+			</div>
+		</a>
+	</div>
+	<div class="row span5 offset5" style="padding-top:20px; padding-bottom:20px;">
+		<a href="#">
+			<div class="notice text-center marker-on-right bg-lightGreen ">
+				<h2 class="fg-white">查看统计</h2>
+			</div>
+		</a>
+	</div>
+	<div class="row span5 offset2" style="padding-top:20px;padding-left:20px;padding-bottom:20px;">
+		<a href="/logout">
+			<div class="notice text-center marker-on-bottom bg-darkRed ">
+				<h2 class="fg-white">注销</h2>
+			</div>
+		</a>
+	</div>
+</div>	
+
+{% endblock %}

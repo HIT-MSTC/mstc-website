@@ -12,10 +12,36 @@ from datetime import *
 def home(req):
 	return render_to_response('index.html',{})
 
+def admin(req):
+	if req.session.get('username',''):
+		return render_to_response('panel.html',{})
+	status = ''
+	if req.POST:
+		post = req.POST
+		username = post['username']
+		password = post['passwd']
+		if User.objects.filter(username = username):
+			user = auth.authenticate(username = username, password = password)
+			if user is not None:
+				if user.is_active:
+					auth.login(req,user)
+					req.session['username'] = username
+					return render_to_response('panel.html',{})
+				else:
+					status = 'NOTACTIVE'
+			else:
+				status = 'PASSWDERR'
+		else:
+			status = "NOTEXIST"
+	content = {'status':status}
+	return render_to_response('login.html',content,context_instance = RequestContext(req))
+
+def logout(req):
+	auth.logout(req)
+	return HttpResponseRedirect('/')
 
 def addDynamics(req):
-	# username = req.session.get("username",'')
-	username = "yumendy"
+	username = req.session.get("username",'')
 	if username == "":
 		return HttpResponseRedirect("/")
 	else:
@@ -68,7 +94,7 @@ def dyndetail(req):
 	try:
 		dyn = Dynamics.objects.get(pk = Id)
 	except:
-		return HttpResponseRedirect('/dynlist/')
+		return HttpResponseRedirect('/dynlist')
 	content = {'dyn':dyn}
 	return render_to_response('dyndetail.html',content)
 
