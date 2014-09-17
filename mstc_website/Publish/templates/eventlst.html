@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}全部活动{% endblock %}
+
+{% block content %}
+
+<div class="container bg-white">
+	<h2 class="no-margin offset1 subheader" style="padding-left:20px;padding-top:20px;">全部活动</h2>
+	<div class="listview-outlook offset1 span11 listview" data-role="listview" style="padding-top:20px;padding-bottom:20px;">
+		{% for item in eventlst %}
+			<a href="eventlst/detail/?id={{ item.id }}" class="list" onclick="window.location.href='eventlst/detail/?id={{ item.id }}'">
+				<div class="list-content">
+					<span class="list-title">{{ item.name }}</span>
+					<span class="list-subtitle">报名人数:{{ item.now_num }}</span>
+					<span class="list-remark">活动时间:{{ item.event_time|date:"Y-m-d H:i:s" }}</span>
+				</div>
+			</a>
+		{% empty %}
+			<a href="#" class="list active marked">
+				<div class="list-content">
+					<span class="list-title">暂无活动</span>
+				</div>
+			</a>
+		{% endfor %}
+	</div>
+</div>
+
+{% endblock %}

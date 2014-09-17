@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}活动详情{% endblock %}
+
+{% block content %}
+
+<div class="container bg-white">
+	<h2 class="no-margin offset1 subheader" style="padding-left:20px;padding-top:20px;">{{ event.name }}</h2>
+	<p class="no-margin offset1" style="padding-top:20px;">活动时间：{{ event.event_time|date:"Y-m-d H:i:s" }}</p>
+	<p class="no-margin offset1" style="padding-top:20px;">报名人数：<span class="text-info">{{ event.now_num }}</span></p>
+	<div class="offset1 span11" style="padding-top:20px;padding-bottom:20px;">
+		{% if partakelst|length > 0 %}
+			<table class="table hovered">
+				<thead>
+					<tr>
+						{% if event.needname %}
+							<th class="text-left">姓名</th>
+						{% endif %}
+						{% if event.needcollege %}
+							<th class="text-left">专业</th>
+						{% endif %}
+						{% if event.needgrade %}
+							<th class="text-left">年级</th>
+						{% endif %}
+						{% if event.needphone %}
+							<th class="text-left">电话</th>
+						{% endif %}
+						{% if event.needemail %}
+							<th class="text-left">邮箱</th>
+						{% endif %}
+						{% if event.needqq %}
+							<th class="text-left">QQ</th>
+						{% endif %}
+						{% if event.needothername %}
+							<th class="text-left">{{ event.othername }}</th>
+						{% endif %}
+					</tr>
+				</thead>
+				<tbody>
+					{% for item in partakelst %}
+						<tr>
+							{% if event.needname %}
+								<td>{{ item.name }}</td>
+							{% endif %}
+							{% if event.needcollege %}
+								<td>{{ item.college }}</td>
+							{% endif %}
+							{% if event.needgrade %}
+								<td>{{ item.grade }}</td>
+							{% endif %}
+							{% if event.needphone %}
+								<td>{{ item.phone }}</td>
+							{% endif %}
+							{% if event.needemail %}
+								<td>{{ item.email }}</td>
+							{% endif %}
+							{% if event.needqq %}
+								<td>{{ item.qq }}</td>
+							{% endif %}
+							{% if event.needothername %}
+								<td>{{ item.other }}</td>
+							{% endif %}
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		{% else %}
+			<h2 class="text-warning">暂无人报名</h2>
+		{% endif %}
+	</div>
+</div>
+
+{% endblock %}

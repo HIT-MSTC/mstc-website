@@ -105,14 +105,14 @@ def join(req):
 	try:
 		event = Event.objects.get(pk = Id)
 	except:
-		return HttpResponseRedirect('/dynlist/')
+		return HttpResponseRedirect('/dynlist')
 	if req.POST:
 		state = ''
 		dt = datetime.now()
 		post = req.POST
 		t = event.end_time
 		if dt > datetime(t.year,t.month,t.day,t.hour,t.minute,t.second):
-			stata = "time_out"
+			state = "time_out"
 			return render_to_response('reseult.html',{'state':state})
 		elif event.now_num >= event.number:
 			state = 'over_number'
@@ -136,7 +136,30 @@ def join(req):
 			partake.save()
 			event.now_num = event.now_num + 1
 			event.save()
-			stata = 'success'
+			state = 'success'
 			return render_to_response('reseult.html',{'state':state})
 	content = {'event':event,'year':year_list}
 	return render_to_response('join.html',content,context_instance = RequestContext(req));
+
+def eventlst(req):
+	username = req.session.get("username",'')
+	if username == '':
+		return HttpResponseRedirect('/admin')
+	else:
+		eventlst = Event.objects.order_by('-event_time')
+		content = {"eventlst":eventlst}
+		return render_to_response('eventlst.html',content)
+
+def eventdetail(req):
+	username = req.session.get("username",'')
+	if username == '':
+		return HttpResponseRedirect('/admin')
+	else:
+		Id = req.GET['id']
+		try:
+			event = Event.objects.get(pk = Id)
+		except:
+			return HttpResponseRedirect('/eventlst')
+		partakelst = Partake.objects.filter(event = event)
+		content = {"event":event,"partakelst":partakelst}
+		return render_to_response('eventdetail.html',content)

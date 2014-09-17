@@ -6,12 +6,12 @@
 {% block content %}
 
 <div class="container bg-white">
-	<div class="span11 offset1" style="padding-left:20px;padding-top:20px">
+	<div class="span11 offset1" style="padding-left:20px;padding-top:20px;padding-bottom:20px;">
 		<div class="panel">
 		    <div class="panel-header bg-lightBlue fg-white">
 		        报名状态
 		    </div>
-		    <div class="panel-content">
+		    <div class="panel-content text-center">
 		        {% if state == "time_out" %}
 		        	<h2 class="text-alert">已经超过报名时间。</h2>
 		        {% endif %}
