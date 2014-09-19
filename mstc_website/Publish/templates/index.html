@@ -6,54 +6,20 @@
 {% block content %}
 
 	<!-- newest -->
-	<div class="carousel container" style="height: 300px;" data-role="carousel" id="carousel1">
-		<div class="slide" style="background:url({% static "img/01.jpg" %}) top left no-repeat; background-size: cover;">
-			<div class="container span11 offset1" style="padding: 50px 20px;">
-				<h1 class="fg-white" style="font-size:50px;">哈工大微软技术俱乐部</h1>
-				<h2 class="fg-white" style="margin-top:20px; font-size:24px;">
-					欢迎加入微软大家庭。
-				</h2>
-				<a id="join_us" href="#" class="place-left button fg-white fg-hover-white bd-emerald" style="margin-top: 40px; background-color:rgb(137,196,2); height:50px;width:176px;">
-				<h4 style="padding:6px 0px 9px 7px; font-size:24px;">加入我们&nbsp;<span class="icon-arrow-right-3 on-right"></span></h4>
-				</a>
-			</div>
+	<div class="container" style="background:url({% static "img/01.jpg" %}) top left no-repeat; background-size:cover;height: 300px;">
+		<div class="container span11 offset1" style="padding: 50px 20px;">
+			<h1 class="fg-white" style="font-size:50px;">哈工大微软技术俱乐部</h1>
+			<h2 class="fg-white" style="margin-top:20px; font-size:24px;">
+				欢迎加入微软大家庭。
+			</h2>
+			<a id="join_us" href="/join/?id=2" class="place-left button fg-white fg-hover-white bd-emerald" style="margin-top: 40px; background-color:rgb(137,196,2); height:50px;width:176px;">
+			<h4 style="padding:6px 0px 9px 7px; font-size:24px;">加入我们&nbsp;<span class="icon-arrow-right-3 on-right"></span></h4>
+			</a>
 		</div>
-		<div class="slide" style="background:url({% static "img/01.jpg" %}) top left no-repeat; background-size: cover;">
-			<div class="container span11 offset1" style="padding: 50px 20px;">
-				<h1 class="fg-white" style="font-size:50px;">哈工大微软技术俱乐部</h1>
-				<h2 class="fg-white" style="margin-top:20px; font-size:24px;">
-					欢迎加入微软大家庭。
-				</h2>
-				<a id="join_us" href="#" class="place-left button fg-white fg-hover-white bd-emerald" style="margin-top: 40px; background-color:rgb(137,196,2); height:50px;width:176px;">
-				<h4 style="padding:6px 0px 9px 7px; font-size:24px;">加入我们&nbsp;<span class="icon-arrow-right-3 on-right"></span></h4>
-				</a>
-			</div>
-		</div>
-		<div class="slide" style="background:url({% static "img/01.jpg" %}) top left no-repeat; background-size: cover;">
-			<div class="container span11 offset1" style="padding: 50px 20px;">
-				<h1 class="fg-white" style="font-size:50px;">哈工大微软技术俱乐部</h1>
-				<h2 class="fg-white" style="margin-top:20px; font-size:24px;">
-					欢迎加入微软大家庭。
-				</h2>
-				<a id="join_us" href="#" class="place-left button fg-white fg-hover-white bd-emerald" style="margin-top: 40px; background-color:rgb(137,196,2); height:50px;width:176px;">
-				<h4 style="padding:6px 0px 9px 7px; font-size:24px;">加入我们&nbsp;<span class="icon-arrow-right-3 on-right"></span></h4>
-				</a>
-			</div>
-		</div>
-		<a class="controls left" style="font-size:30px;"><i class="icon-arrow-left-3"></i></a>
-		<a class="controls right" style="font-size:30px;"><i class="icon-arrow-right-3"></i></a>
 	</div>
-	<script>
-		$(function(){
-		    $("#carousel1").carousel({
-		        period: 4000,
-		        duration: 1500,
-		    });
-		})
-	</script>
 	<div class="container bg-cyan" style="height:41px;vertical-align:middle;">
 		<div class="offset1">
-			<h3 class="fg-white no-margin" style="padding:10px 10px 10px 20px;font-size:14px">更多活动</h3>
+			<h3 class="no-margin" style="padding:10px 10px 10px 20px;font-size:14px"><a class="fg-white" href="/dynlist">更多活动</a></h3>
 		</div>
 	</div>
 	<div class="container bg-white" style="height:342px;">
@@ -61,45 +27,23 @@
 			<div class="row no-margin">
 				<div class="span5 offset1" style="padding-left:114px;padding-top:58px">
 					<h4 class="subheader-secondary" style="padding-top:20px;">Who are we</h4>
-					<p class="tertiary-text" style="padding-top:17px;width:231px;">哈工大微软技术俱乐部成立于2000年，是哈工大首批建立的技术俱乐部，在微软亚洲研究院与校团委的指导下举办了各种活动。</p>
+					<p class="tertiary-text" style="padding-top:17px;width:231px;line-height:30px">我们是哈工大首批成立的技术俱乐部，受到微软亚洲研究院的重点培养和鼎力支持。</p>
 				</div>
-				<div class="span5" style="padding-top:75px;margin-left:10px;">
-					<img src="#" class="shadow bg-black" style="height:192px;width:476px;">
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="container" style="height:342px;background-color:rgb(232,78,35)">
-		<div class="grid no-margin">
-			<div class="row no-margin">
-				<div class="span6 offset1" style="padding-left:87px;padding-top:75px">
-					<img src="#" class="shadow bg-black" style="height:192px;width:476px;">
-				</div>
-				<div class="span4" style="padding-top:58px;padding-left:29px;">
-					<h4 class="subheader-secondary fg-white" style="padding-top:20px;">What will you get</h4>
-					<p class="tertiary-text fg-white" style="padding-top:20px;">学习最新的技术和文化<br>找到志同道合的朋友<br>收获你的大学</p>
+				<div class="span6" style="padding-top:75px;margin-left:10px;">
+					<img src="{% static "img/03.jpg" %}" class="shadow" style="height:192px;width:476px;">
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="container  bg-white" style="height:565px">
+	<div class="container" style="background-color:rgb(222,222,222)">
 		<div class="grid no-margin">
-			<div class="row no-margin">
-				<center>
-					<!-- <embed src="http://player.youku.com/player.php/sid/XNzczODY4MTc2/v.swf" allowFullScreen="true" quality="high" width="920" height="565" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed> -->
-				</center>
-			</div>
-		</div>
-	</div>
-	<div class="container" style="height:267px;background-color:rgb(222,222,222)">
-		<div class="grid no-margin">
-			<div class="row no-margin" style="padding-left:20px;">
-				<div class="span3 offset1" style="padding-top:26px;">
+			<div class="row no-margin offset1" style="padding-left:20px;">
+				<div class="span3" style="padding-top:26px;">
 					<div class="panel" style="border-color:#c5c5c5;">
 						<div class="panel-content text-center">
 							<h3 style="font-size:20px;padding-top:13px;">技术部</h3>
-							<img src="#" class="shadow bg-black" style="height:90px;width:90px;margin-top:16px;">
-							<p style="font-size:14px;margin-top:20px;">我是字</p>
+							<img src="{% static "img/wrench.png" %}" style="height:90px;margin-top:16px;">
+							<p style="font-size:14px;margin-top:20px;">德技双馨，功夫到家</p>
 						</div>
 					</div>
 				</div>
@@ -107,8 +51,8 @@
 					<div class="panel" style="border-color:#c5c5c5;">
 						<div class="panel-content text-center">
 							<h3 style="font-size:20px;padding-top:13px;">活动部</h3>
-							<img src="#" class="shadow bg-black" style="height:90px;width:90px;margin-top:16px;">
-							<p style="font-size:14px;margin-top:20px;">我是字</p>
+							<img src="{% static "img/party_hat.png" %}" style="height:90px;margin-top:16px;">
+							<p style="font-size:14px;margin-top:20px;">我们都是大玩家</p>
 						</div>
 					</div>
 				</div>
@@ -116,32 +60,54 @@
 					<div class="panel" style="border-color:#c5c5c5;">
 						<div class="panel-content text-center">
 							<h3 style="font-size:20px;padding-top:13px;">宣传部</h3>
-							<img src="#" class="shadow bg-black" style="height:90px;width:90px;margin-top:16px;">
-							<p style="font-size:14px;margin-top:20px;">我是字</p>
+							<img src="{% static "img/pencil.png" %}" style="height:90px;margin-top:16px;">
+							<p style="font-size:14px;margin-top:20px;">关注美，更关注设计</p>
 						</div>
 					</div>
 				</div>
 				<div class="span3" style="padding-top:26px;" >
-					<div class="panel" style="border-color:#c5c5c5;">
+					<div class="panel" style="border-color:#c5c5c5;margin-bottom:20px;">
 						<div class="panel-content text-center">
 							<h3 style="font-size:20px;padding-top:13px;">公关部</h3>
-							<img src="#" class="shadow bg-black" style="height:90px;width:90px;margin-top:16px;">
-							<p style="font-size:14px;margin-top:20px;">我是字</p>
+							<img src="{% static "img/tie.png" %}" style="height:90px;margin-top:16px;">
+							<p style="font-size:14px;margin-top:20px;">为自己带盐</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="container" style="height:342px;background-color:rgb(141,199,0)">
+	<div class="container" style="height:342px;background-color:rgb(232,78,35)">
 		
 	</div>
+	<div class="container  bg-white" style="height:565px">
+		<div class="grid no-margin">
+			<div class="row no-margin">
+				<center>
+					<embed src="http://player.youku.com/player.php/sid/XNzg1NzY5ODky/v.swf" allowFullScreen="true" quality="high" width="920" height="565" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+				</center>
+			</div>
+		</div>
+	</div>
 
+	<div class="container" style="height:342px;background-color:rgb(141,199,0)">
+		<div class="grid no-margin">
+			<div class="row no-margin">
+				<div class="span7 offset1" style="padding-left:87px;padding-top:75px">
+					<img src="{% static "img/04.jpg" %}" class="shadow bg-black" style="height:192px;width:476px;">
+				</div>
+				<div class="span4" style="padding-top:58px;padding-left:29px;">
+					<h4 class="subheader-secondary fg-white" style="padding-top:20px;">What will you get</h4>
+					<p class="tertiary-text fg-white" style="padding-top:20px;line-height:30px">学习最新的技术和文化<br>找到志同道合的朋友<br>收获你的大学</p>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="container" style="height:342px;background-color:rgb(0,171,236)">
 		<div class="grid no-margin">
 			<div class="row no-margin">
 				<div class="span12 offset1 text-center" style="padding-left:20px;">
-					<h4 class="subheader-secondary fg-white" style="padding-top:156px;">我们的宗旨:&nbsp;&nbsp;学习先进技术&nbsp;开拓创新思维&nbsp;体验多元文化&nbsp;成就一流人才</h4>
+					<h2 class="fg-white" style="padding-top:156px;">微&nbsp;&nbsp;俱&nbsp;&nbsp;有&nbsp;&nbsp;你&nbsp;&nbsp;，&nbsp;&nbsp;由&nbsp;&nbsp;微&nbsp;&nbsp;至&nbsp;&nbsp;巨</h2>
 				</div>
 			</div>
 		</div>

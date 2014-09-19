@@ -7,6 +7,7 @@
 
 <div class="container bg-white">
 	<div class="span4 offset1" style="padding-left:20px;padding-top:20px">
+		<h2>{{ event.name }}</h2>
 		<form method="post" class="no-margin">
 			{% csrf_token %}
 			{% if event.needname %}
