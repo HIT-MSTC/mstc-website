@@ -9,7 +9,7 @@
 	<h2 class="no-margin offset1 subheader" style="padding-left:20px;padding-top:20px;">{{ event.name }}</h2>
 	<p class="no-margin offset1" style="padding-top:20px;">活动时间：{{ event.event_time|date:"Y-m-d H:i:s" }}</p>
 	<p class="no-margin offset1" style="padding-top:20px;">报名人数：<span class="text-info">{{ event.now_num }}</span></p>
-	<div class="offset1 span11" style="padding-top:20px;padding-bottom:20px;">
+	<div class="offset1" style="padding-top:20px;padding-bottom:20px;">
 		{% if partakelst|length > 0 %}
 			<table class="table hovered">
 				<thead>
