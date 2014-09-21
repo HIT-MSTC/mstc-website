@@ -85,6 +85,7 @@ def addDynamics(req):
 					new_evevt.needothername = True
 					new_evevt.othername = post['othername']
 				new_evevt.save()
+				return HttpResponseRedirect('/dynlist')
 		return render_to_response('addDynamics.html',{'last_event':last_event},context_instance = RequestContext(req))
 
 def dynlist(req):
