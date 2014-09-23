@@ -8,7 +8,8 @@
 <div class="container bg-white">
 	<div class="span4 offset1" style="padding-left:20px;padding-top:20px">
 		<h2>{{ event.name }}</h2>
-		<form method="post" class="no-margin">
+		<p style="padding-top:20px;">截止时间:&nbsp;<span class="text-info">{{ event.end_time|date:"Y-m-d H:i:s" }}</span></p>
+		<form method="post" class="no-margin" style="padding-top:20px;">
 			{% csrf_token %}
 			{% if event.needname %}
 				<label>姓名</label>
@@ -57,9 +58,8 @@
 			{% endif %}
 			{% if event.needothername %}
 				<label>{{ event.othername }}</label>
-				<div class="input-control text">
-					<input type="text" name="other">
-					<button class="btn-clear"></button>
+				<div class="input-control textarea">
+					<textarea name="other" rows="10" warp="hard" cols="40"></textarea>
 				</div>
 			{% endif %}
 			<div class="form-actions" style="padding-top:20px; padding-bottom:20px">

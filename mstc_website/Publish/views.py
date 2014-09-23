@@ -10,10 +10,12 @@ from datetime import *
 
 # Create your views here.
 
-last_event = Event.objects.order_by('-event_time')[0]
+def get_last_event():
+	last_event = Event.objects.order_by('-event_time')[0]
+	return last_event
 
 def home(req):
-	return render_to_response('index.html',{'last_event':last_event})
+	return render_to_response('index.html',{'last_event':get_last_event()})
 
 def admin(req):
 	if req.session.get('username',''):
@@ -36,7 +38,7 @@ def admin(req):
 				status = 'PASSWDERR'
 		else:
 			status = "NOTEXIST"
-	content = {'status':status,'last_event':last_event}
+	content = {'status':status,'last_event':get_last_event()}
 	return render_to_response('login.html',content,context_instance = RequestContext(req))
 
 def logout(req):
@@ -86,11 +88,11 @@ def addDynamics(req):
 					new_evevt.othername = post['othername']
 				new_evevt.save()
 				return HttpResponseRedirect('/dynlist')
-		return render_to_response('addDynamics.html',{'last_event':last_event},context_instance = RequestContext(req))
+		return render_to_response('addDynamics.html',{'last_event':get_last_event()},context_instance = RequestContext(req))
 
 def dynlist(req):
 	dynlst = Dynamics.objects.order_by('-publish_time')
-	content = {"dynlst":dynlst,'last_event':last_event}
+	content = {"dynlst":dynlst,'last_event':get_last_event()}
 	return render_to_response('dynlist.html', content)
 
 def dyndetail(req):
@@ -99,7 +101,7 @@ def dyndetail(req):
 		dyn = Dynamics.objects.get(pk = Id)
 	except:
 		return HttpResponseRedirect('/dynlist')
-	content = {'dyn':dyn,'last_event':last_event}
+	content = {'dyn':dyn,'last_event':get_last_event()}
 	return render_to_response('dyndetail.html',content)
 
 def join(req):
@@ -117,10 +119,10 @@ def join(req):
 		t = event.end_time
 		if dt > datetime(t.year,t.month,t.day,t.hour,t.minute,t.second):
 			state = "time_out"
-			return render_to_response('reseult.html',{'state':state,'last_event':last_event})
+			return render_to_response('reseult.html',{'state':state,'last_event':get_last_event()})
 		elif event.now_num >= event.number:
 			state = 'over_number'
-			return render_to_response('reseult.html',{'state':state,'last_event':last_event})
+			return render_to_response('reseult.html',{'state':state,'last_event':get_last_event()})
 		else:
 			partake = Partake(event = event)
 			if 'name' in post:
@@ -141,8 +143,8 @@ def join(req):
 			event.now_num = event.now_num + 1
 			event.save()
 			state = 'success'
-			return render_to_response('reseult.html',{'state':state,'last_event':last_event})
-	content = {'event':event,'year':year_list,'last_event':last_event}
+			return render_to_response('reseult.html',{'state':state,'last_event':get_last_event()})
+	content = {'event':event,'year':year_list,'last_event':get_last_event()}
 	return render_to_response('join.html',content,context_instance = RequestContext(req));
 
 def eventlst(req):
@@ -151,7 +153,7 @@ def eventlst(req):
 		return HttpResponseRedirect('/admin')
 	else:
 		eventlst = Event.objects.order_by('-event_time')
-		content = {"eventlst":eventlst,'last_event':last_event}
+		content = {"eventlst":eventlst,'last_event':get_last_event()}
 		return render_to_response('eventlst.html',content)
 
 def eventdetail(req):
@@ -165,5 +167,5 @@ def eventdetail(req):
 		except:
 			return HttpResponseRedirect('/eventlst')
 		partakelst = Partake.objects.filter(event = event)
-		content = {"event":event,"partakelst":partakelst,'last_event':last_event}
+		content = {"event":event,"partakelst":partakelst,'last_event':get_last_event()}
 		return render_to_response('eventdetail.html',content)

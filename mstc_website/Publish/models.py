@@ -30,7 +30,7 @@ class Event(models.Model):
 	needemail = models.BooleanField(default = False)
 	needqq = models.BooleanField(default = False)
 	needothername = models.BooleanField(default = False)
-	othername = models.CharField(max_length = 16, default = 'Remark')
+	othername = models.CharField(max_length = 128, default = 'Remark')
 
 	def __unicode__(self):
 		return self.name
