@@ -7,11 +7,16 @@ from django.contrib import auth
 from django.contrib.auth.models import User
 
 from datetime import *
+from markdown import markdown
 
 # Create your views here.
 
 def get_last_event():
-	last_event = Event.objects.order_by('-event_time')[0]
+	last_event = Event.objects.order_by('-event_time')
+	if len(last_event) > 0:
+		last_event = last_event[0]
+	else:
+		last_event = Event(id = 0)
 	return last_event
 
 def home(req):
@@ -56,6 +61,7 @@ def addDynamics(req):
 			new_dynamics = Dynamics(title = post['title'], \
 									author = user, \
 									content = post['content'], \
+									model = post['model'], \
 									)
 			if post['hasform'] == "False":
 				new_dynamics.hasform = False
@@ -101,6 +107,8 @@ def dyndetail(req):
 		dyn = Dynamics.objects.get(pk = Id)
 	except:
 		return HttpResponseRedirect('/dynlist')
+	if dyn.model == 2:
+		dyn.content = markdown(dyn.content)
 	content = {'dyn':dyn,'last_event':get_last_event()}
 	return render_to_response('dyndetail.html',content)
 

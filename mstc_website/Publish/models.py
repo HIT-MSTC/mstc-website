@@ -7,9 +7,10 @@ class Dynamics(models.Model):
 	title = models.CharField(max_length = 128)
 	author = models.ForeignKey(User)
 	publish_time = models.DateTimeField(auto_now = True)
-	content = models.CharField(max_length = 5000)
+	content = models.TextField(max_length = 5000)
 
 	hasform = models.BooleanField(default = False)
+	model = models.IntegerField(default = 1)
 
 	def __unicode__(self):
 		return self.title

@@ -25,7 +25,9 @@
 
 				<a href="/" class="element" style="font-size:13px;">首页</a>
 				<a href="/dynlist" class="element" style="font-size:13px;">动态</a>
-				<a href="/join/?id={{ last_event.id }}" class="element" style="font-size:13px;">活动报名</a>
+				{% if last_event.id %}
+					<a href="/join/?id={{ last_event.id }}" class="element" style="font-size:13px;">活动报名</a>
+				{% endif %}
 			</div>
 		</nav>
 

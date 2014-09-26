@@ -8,7 +8,13 @@
 <div class="container bg-white">
 	<h2 class="no-margin offset1 subheader" style="padding-left:20px;padding-top:20px;">{{ dyn.title }}</h2>
 	<h5 class="no-margin offset1" style="padding-top:20px;">{{dyn.author}}&nbsp;&nbsp;<small>{{ dyn.publish_time|date:"Y-m-d H:i:s" }}</small></h5>
-	<pre class="readable-text code-text offset1 span11 no-margin" style="padding-top:20px;padding-bottom:20px;white-space:pre-wrap">{{ dyn.content }}</pre>
+	{% if dyn.model == 1 %}
+		<pre class="readable-text code-text offset1 span11 no-margin" style="padding-top:20px;padding-bottom:20px;white-space:pre-wrap">{{ dyn.content }}</pre>
+	{% else %}
+		<div class="no-margin span11 offset1" style="padding-top:20px;padding-bottom:20px;">
+			{{ dyn.content|safe }}
+		</div>
+	{% endif %}
 	{% if dyn.hasform %}
 		<img src="http://api.kuaipai.cn/qr?chs=120x120&chl=" class="shadow offset1">
 		<br>
