@@ -6,8 +6,13 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import auth
 from django.contrib.auth.models import User
 
+from sae.storage import Bucket, Client
+from sae.ext.storage import monkey
+monkey.patch_all()
+
 from datetime import *
 from markdown import markdown
+from random import randint
 
 # Create your views here.
 
@@ -177,3 +182,42 @@ def eventdetail(req):
 		partakelst = Partake.objects.filter(event = event)
 		content = {"event":event,"partakelst":partakelst,'last_event':get_last_event()}
 		return render_to_response('eventdetail.html',content)
+
+def imgupload(req):
+	username = req.session.get("username",'')
+	if username == '':
+		return HttpResponseRedirect('/admin')
+	else:
+		if req.POST:
+			post = req.POST
+			if req.FILES:
+				img = req.FILES['img']
+				# s = Client()
+				bucket = Bucket('img')
+				# st = bucket.conn.__dict__
+				# if bucket.stat()['bytes'] == '0':
+				bucket.put()
+				bucket.post(acl='.r:.sinaapp.com,.r:sae.sina.com.cn')
+				tut = img._name.split('.')[-1]
+				dt_str = datetime.strftime(datetime.now(),'%Y%m%d%H%M%S')
+				filename = dt_str + str(randint(100,999)) + '.' + tut
+				bucket.put_object(filename,img)
+				# s.put('hitmstcweb',filename,img)
+				image = Img(
+							name = post.get('name','dt_str'), \
+							descripe = post.get('descripe',''), \
+							img = bucket.generate_url(filename), \
+							author = User.objects.get(username = username), \
+							)
+				image.save()
+	content = {'last_event':get_last_event()}
+	return render_to_response('imgupload.html',content,context_instance = RequestContext(req));
+
+def imglist(req):
+	username = req.session.get("username",'')
+	if username == '':
+		return HttpResponseRedirect('/admin')
+	else:
+		imglst = Img.objects.order_by('-uptime')
+		content = {'imglst':imglst, 'last_event':get_last_event()}
+		return render_to_response('imglist.html',content)

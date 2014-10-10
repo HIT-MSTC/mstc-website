@@ -20,4 +20,6 @@ urlpatterns = patterns('',
     url(r'^join/$',views.join),
     url(r'^eventlst$',views.eventlst),
     url(r'^eventlst/detail/$',views.eventdetail),
+    url(r'^imgupload/$',views.imgupload),
+    url(r'^imglist/$',views.imglist),
 )

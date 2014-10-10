@@ -10,7 +10,9 @@
 	<div class="span10 offset1" style="padding-left:20px;padding-top:20px">
 		<h2>添加动态</h2>
 		<div class="row" style="margin-top:20px;margin-bottom:20px;">
-			<button class="butten info" onclick="showform()" data-s="off" id="Switch" sty>开启报名</button>
+			<button class="butten info" onclick="showform()" data-s="off" id="Switch">开启报名</button>
+			<button class="butten info" onclick="window.open('/imglist/')" >图片列表</button>
+			<button class="butten info" onclick="window.open('/imgupload/')" >图片上传</button>
 		</div>
 		<form method="post" class="no-margin">
 			{% csrf_token %}

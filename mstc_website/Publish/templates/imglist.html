@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}全部图片{% endblock %}
+
+{% block content %}
+
+<div class="container bg-white">
+	<h2 class="no-margin offset1 subheader" style="padding-left:20px;padding-top:20px;">全部图片</h2>
+	<div class="listview-outlook offset1 span11 listview" data-role="listview" style="padding-top:20px;padding-bottom:20px;">
+		{% for item in imglst %}
+			<div class="list">
+				<div class="list-content">
+					<span class="list-title">{{ item.name }}</span>
+					<span class="list-remark">{{ item.descripe }}</span>
+					<span class="list-title">{{ item.img }}</span>
+					<span class="list-subtitle">{{ item.author }}</span>
+					<span class="list-remark">{{ item.uptime|date:"Y-m-d H:i:s" }}</span>
+					<button class="info" target="_blank" onclick="window.open('{{ item.img }}')">预览图片</button>
+				</div>
+			</div>
+		{% empty %}
+			<a href="#" class="list active marked">
+				<div class="list-content">
+					<span class="list-title">暂无图片</span>
+				</div>
+			</a>
+		{% endfor %}
+	</div>
+</div>
+
+{% endblock %}

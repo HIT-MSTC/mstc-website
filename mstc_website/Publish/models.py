@@ -55,3 +55,10 @@ class Partake(models.Model):
 
 	def __unicode__(self):
 		return self.name
+
+class Img(models.Model):
+	name = models.CharField(max_length = 128, null = True)
+	descripe = models.TextField(max_length = 512, null = True)
+	uptime = models.DateTimeField(auto_now = True)
+	author = models.ForeignKey(User)
+	img = models.URLField()
